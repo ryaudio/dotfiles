@@ -4,13 +4,13 @@ sudo -v
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   # Linux
   sudo apt update
-  sudo apt install zsh tmux htop tree git make cmake gcc ssh curl wget pv rsync-y
-  sudo apt install vim-gtk-y
+  sudo apt install zsh tmux htop tree git make cmake gcc ssh curl wget pv rsync awk -y
+  sudo apt install vim-gtk -y
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac OSX
   xcode-select --install 2> /dev/null
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null
-  brew install zsh tmux htop tree git make cmake gcc curl wget pv rsync
+  brew install zsh tmux htop tree git make cmake gcc curl wget pv rsync awk
   brew cask install iterm2
   
   # make sure home and end work universally
