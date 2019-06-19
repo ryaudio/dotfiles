@@ -42,3 +42,5 @@ git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zs
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 sudo chsh -s $(which zsh) $USER
+
+echo "Configuration done! You probably still want to configure git and ssh."
