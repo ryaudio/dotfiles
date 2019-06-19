@@ -4,7 +4,7 @@ sudo -v
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   # Linux
   sudo apt update
-  sudo apt install zsh tmux htop tree git make cmake gcc ssh curl wget pv rsync awk -y
+  sudo apt install zsh tmux htop tree git make cmake gcc ssh curl wget awk pv rsync -y --ignore-missing
   sudo apt install vim-gtk -y
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac OSX
@@ -40,3 +40,5 @@ git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zs
 
 # Zsh Suggestions while typing
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
+sudo chsh -s $(which zsh) $USER
