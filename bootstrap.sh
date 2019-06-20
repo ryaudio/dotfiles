@@ -27,8 +27,10 @@ else
 fi
 
 # Oh-my-zsh
-curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh) --unattended"
 
+# Move the .zshrc back after oh-my-zsh changes it
+mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
 # powerlevel9k theme for zsh
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
@@ -43,4 +45,13 @@ git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/z
 
 sudo chsh -s $(which zsh) $USER
 
-echo "Configuration done! You probably still want to configure git and ssh."
+# Install fonts for powerline
+# Note: still need to select them as default on mac
+git clone https://github.com/powerline/fonts
+cd fonts
+sh install.sh
+cd ..
+rm -rf fonts
+
+echo "Configuration done\! You probably still want to configure git and ssh."
+echo "Make sure to select the \"Meslo LG M Regular for Powerline\" font in your terminal\!"
