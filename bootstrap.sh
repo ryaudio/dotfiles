@@ -54,4 +54,4 @@ cd ..
 rm -rf fonts
 
 echo "Configuration done\! You probably still want to configure git and ssh."
-echo "Make sure to select the \"Meslo LG M Regular for Powerline\" font in your terminal\!"
+echo "Make sure to select the \"Meslo LG M Regular for Powerline\" font in your terminal!"
