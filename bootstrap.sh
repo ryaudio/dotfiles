@@ -53,5 +53,10 @@ sh install.sh
 cd ..
 rm -rf fonts
 
-echo "Configuration done\! You probably still want to configure git and ssh."
+# Install TPM (Tmux plugin manager)
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux source ~/.tmux.conf
+
+
+echo "\n\nConfiguration done! You probably still want to configure git and ssh."
 echo "Make sure to select the \"Meslo LG M Regular for Powerline\" font in your terminal!"
