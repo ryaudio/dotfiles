@@ -4,14 +4,14 @@ sudo -v
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   # Linux
   sudo apt update && sudo apt upgrade -y
-  sudo apt install zsh tmux htop tree git make cmake gcc ssh curl wget awk pv rsync -y --ignore-missing
+  sudo apt install zsh tmux htop tree git make cmake gcc ssh curl wget awk pv rsync watch -y --ignore-missing
   sudo apt install vim-gtk -y
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac OSX
   xcode-select --install 2> /dev/null
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null
   brew update && brew upgrade
-  brew install zsh tmux htop tree git make cmake gcc curl wget pv rsync awk
+  brew install zsh tmux htop tree git make cmake gcc curl wget pv rsync awk watch
   brew cask install iterm2
   
   # make sure home and end work universally
@@ -54,9 +54,10 @@ sh install.sh
 cd ..
 rm -rf fonts
 
-# Install TPM (Tmux plugin manager)
+# Install TMUX Package Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-tmux source ~/.tmux.conf
+# Make tmux install the plugins, without us having to hit prefix + I
+tmux new-session -d -s plugin_install 'sleep 1; ~/.tmux/plugins/tpm/bindings/install_plugins'
 
 echo ""
 echo ""
