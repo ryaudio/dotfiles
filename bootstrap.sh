@@ -1,19 +1,38 @@
 #!/bin/bash
 # Make sure the user's sudo is recent
 sudo -v
+
+packagelist=(
+  zsh     # A much better shell than the default bash!  
+  tmux    # A great terminal multiplexer. Allows disconnecting from ssh session and reconnecting later, as well as splitting terminal windows and more
+  htop    # An easy to use tool to view CPU and memory usage stats
+  tree    # Gives a filesystem tree representation
+  git     # Used for version controling software. Also needed by the bootstrap.sh script to install software
+  make
+  cmake
+  gcc
+  ssh
+  curl    # Used to issue http requests as well as get items from the web
+  wget    # Simpler tool to get files from the web
+  pv      # Used to display progress of reading a file. Great for showing progress of long commands.
+  rsync   # Efficient way to copy files as well as keep them in sync with eachother.
+  watch   # Repeatedly calls command. Great when used in conjunction with nvidia-smi to watch GPU stats.
+  git-lfs # Extension for git that manages big files better. Note that this still has to be activated for each git repo you want to use it in!
+  xclip   # Needed for copying from tmux to system clipboard
+  cmatrix # Cool matrix effect as a placeholder, nice with tmux
+)
+
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   # Linux
   sudo apt update && sudo apt upgrade -y
-  sudo apt install zsh tmux htop tree git make cmake gcc \
-  ssh curl wget awk pv rsync watch cmatrix git-lfs xclip -y --ignore-missing
+  sudo apt install -y --ignore-missing ${packagelist[@]}
   sudo apt install vim-gtk -y
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac OSX
   xcode-select --install 2> /dev/null
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null
   brew update && brew upgrade
-  brew install zsh tmux htop tree git make cmake gcc \
-  curl wget pv rsync awk watch cmatrix git-lfs xclip
+  brew install ${packagelist[@]}
   brew cask install iterm2
   
   # make sure home and end work universally
