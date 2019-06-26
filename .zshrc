@@ -145,3 +145,15 @@ export LD_LIBRARY_PATH="/usr/local/cuda-10.0/lib64:$LD_LIBRARY_PATH"
 # GO workspace (where `go get` installs stuff, etc)
 export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
+
+# Custom functions
+function puntar() {
+  local file="$1"
+  local output="${file%%.*}" # get filename without extension: https://stackoverflow.com/a/965069
+  mkdir -p $output
+  # {@:2} gets all arguments after first: https://stackoverflow.com/a/9057392
+  # unix (mac) du has no way to print in bytes, but does have kilobytes with -k. PV provides suffixes to report size in kilobytes, so we use that.
+  cat $file | pv -s $(du -k $file | awk '{print $1}')k | tar ${@:2} -xf - -C $output
+}
+
+export puntar
