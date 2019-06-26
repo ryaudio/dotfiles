@@ -34,6 +34,11 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   brew update && brew upgrade
   brew install ${packagelist[@]}
   brew cask install iterm2
+
+  # mac installs BSD tar which is incompatible with GNU tar. Use GNU instead
+  brew install gnu-tar
+  sudo unlink `which tar`
+  sudo ln -s `which gtar` /usr/bin/tar
   
   # make sure home and end work universally
   mkdir -p ~/Library/KeyBindings/
