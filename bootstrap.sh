@@ -26,7 +26,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   # Linux
   sudo apt update && sudo apt upgrade -y
   sudo apt install -y --ignore-missing ${packagelist[@]}
-  sudo apt install vim-gtk -y
+  sudo apt install python3-dev python-dev vim-gtk -y
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac OSX
   xcode-select --install 2> /dev/null
