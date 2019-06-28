@@ -11,7 +11,6 @@ packagelist=(
   make
   cmake
   gcc
-  ssh
   curl    # Used to issue http requests as well as get items from the web
   wget    # Simpler tool to get files from the web
   pv      # Used to display progress of reading a file. Great for showing progress of long commands.
@@ -26,13 +25,14 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   # Linux
   sudo apt update && sudo apt upgrade -y
   sudo apt install -y --ignore-missing ${packagelist[@]}
-  sudo apt install vim-gtk -y
+  sudo apt install ssh vim-gtk -y
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac OSX
   xcode-select --install 2> /dev/null
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null
   brew update && brew upgrade
   brew install ${packagelist[@]}
+  brew install openssh
   brew cask install iterm2
   
   # make sure home and end work universally
