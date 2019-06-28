@@ -25,7 +25,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
   # Linux
   sudo apt update && sudo apt upgrade -y
   sudo apt install -y --ignore-missing ${packagelist[@]}
-  sudo apt install ssh vim-gtk -y
+  sudo apt install python3-dev python-dev vim-gtk ssh -y
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac OSX
   xcode-select --install 2> /dev/null
@@ -34,6 +34,11 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   brew install ${packagelist[@]}
   brew install openssh
   brew cask install iterm2
+
+  # mac installs BSD tar which is incompatible with GNU tar. Use GNU instead
+  brew install gnu-tar
+  sudo unlink `which tar`
+  sudo ln -s `which gtar` /usr/bin/tar
   
   # make sure home and end work universally
   mkdir -p ~/Library/KeyBindings/
