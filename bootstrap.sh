@@ -34,6 +34,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   brew install ${packagelist[@]}
   brew install openssh
   brew cask install iterm2
+  
+  # ensure that sshd is enabled
+  sudo systemsetup -setremotelogin on
 
   # mac installs BSD tar which is incompatible with GNU tar. Use GNU instead
   brew install gnu-tar
