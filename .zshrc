@@ -139,8 +139,8 @@ conda activate base
 # <<< conda initialize <<<
 
 # CUDA Toolkit
-export PATH="/usr/local/cuda-10.0/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/cuda-10.0/lib64:$LD_LIBRARY_PATH"
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 # GO workspace (where `go get` installs stuff, etc)
 export GOPATH="$HOME/.go"
