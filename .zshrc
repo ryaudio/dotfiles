@@ -139,21 +139,47 @@ conda activate base
 # <<< conda initialize <<<
 
 # CUDA Toolkit
-export PATH="/usr/local/cuda-10.0/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/cuda-10.0/lib64:$LD_LIBRARY_PATH"
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 # GO workspace (where `go get` installs stuff, etc)
 export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
 
 # Custom functions
-function puntar() {
-  local file="$1"
-  local output="${file%%.*}" # get filename without extension: https://stackoverflow.com/a/965069
-  mkdir -p $output
+function puntar() {(
+  set -e
+  set -o pipefail
+  file="$1"
+  output="${file%%.*}" # get filename without extension: https://stackoverflow.com/a/965069
+  if test ! -f "$file"; then
+    echo "The file \"$file\" doesn't exist!" >&2
+    exit -1
+  fi
+  mkdir -p "$output"
   # {@:2} gets all arguments after first: https://stackoverflow.com/a/9057392
   # unix (mac) du has no way to print in bytes, but does have kilobytes with -k. PV provides suffixes to report size in kilobytes, so we use that.
-  cat $file | pv -s $(du -k $file | awk '{print $1}')k | tar ${@:2} -xf - -C $output
-}
-
+  cat "$file" | pv -s $(du -k "$file" | awk '{print $1}')k | tar ${@:2} -xf - -C "$output"
+)}
 export puntar
+
+function ptar() {(
+  set -e
+  set -o pipefail
+  file="$2"
+  output="$3"
+  compressor="$1"
+  if test ! -e "$file"; then
+    echo "The file \"$file\" doesn't exist!" >&2
+    exit -1
+  fi
+  # {@:2} gets all arguments after first: https://stackoverflow.com/a/9057392
+  # unix (mac) du has no way to print in bytes, but does have kilobytes with -k. PV provides suffixes to report size in kilobytes, so we use that.
+  tar -cf - "$file" -P | pv -s $(du -sk "$file" | awk '{print $1}')k | $compressor > "$output"
+)}
+export ptar
+
+function pgtar() {(
+  ptar gzip "$1" "$2"
+)}
+export pgtar
