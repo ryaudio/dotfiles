@@ -39,6 +39,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   brew install gnu-tar
   sudo unlink `which tar`
   sudo ln -s `which gtar` /usr/bin/tar
+
+  # make finder show hidden files
+  defaults write com.apple.Finder AppleShowAllFiles true
   
   # make sure home and end work universally
   mkdir -p ~/Library/KeyBindings/
