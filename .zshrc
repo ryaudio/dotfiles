@@ -180,6 +180,18 @@ function ptar() {(
 export ptar
 
 function pgtar() {(
+  set -e
   ptar gzip "$1" "$2"
 )}
 export pgtar
+
+# rsync doesn't show progress by default
+alias rsync='rsync --info=progress2'
+
+# also make it easy to resume large transfers in a clean way
+function copy() {(
+  set -e
+  fname="$(basename -- "$1")"
+  rsync --partial-dir ".$fname.tmp" $1 $2
+)}
+export copy
