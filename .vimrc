@@ -32,3 +32,9 @@ Plug 'othree/eregex.vim'
 " Initialize plugin system
 call plug#end()
 
+" Make eregex case sensitive
+let g:eregex_force_case = 1
+
+" Use eregex for %s without having to capitalize
+cabbrev %s <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? '%S' : '%s')<CR>
+cabbrev s <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'S' : 's')<CR>
