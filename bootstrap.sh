@@ -91,6 +91,10 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Make tmux install the plugins, without us having to hit prefix + I
 tmux new-session -d -s plugin_install 'sleep 1; ~/.tmux/plugins/tpm/bindings/install_plugins'
 
+# Run Vim-Plug's PlugInstall command to install plugins for the first time
+# https://github.com/junegunn/vim-plug/issues/675#issuecomment-328157169
+vim +'PlugInstall --sync' +qa
+
 echo ""
 echo ""
 echo "Configuration done! You probably still want to configure git and ssh."

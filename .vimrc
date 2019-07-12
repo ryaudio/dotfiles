@@ -24,11 +24,11 @@ endif
 " Specify directory for plugins
 " Avoid using standard ones like 'plugin'
 call plug#begin('~/.vim/plugged')
-
 " Make sure you use single quotes!
+
+" Makes vim use perl-like regex, similar to Python Java, etc
+Plug 'othree/eregex.vim'
 
 " Initialize plugin system
 call plug#end()
 
-" Auto-install by default
-autocmd VimEnter * PlugInstall
