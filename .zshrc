@@ -185,6 +185,26 @@ function pgtar() {(
 )}
 export pgtar
 
+function pchildren() {(
+  # get all the pids of child processes recursively
+  # https://unix.stackexchange.com/a/317605
+  [ "$#" -eq 1 -a -d "/proc/$1/task" ] || exit 1
+  PID_LIST= 
+	findpids() {
+    [ ! -d "/proc/$1/task" ] && return
+    for pid in /proc/$1/task/*; do
+    	pid="$(basename "$pid")"
+      PID_LIST="$PID_LIST$pid "
+      for cpid in $(cat /proc/$1/task/$pid/children) ; do
+        findpids $cpid
+     	done
+    done
+	}
+	findpids $1
+	echo $PID_LIST
+)}
+export pchildren
+
 # rsync doesn't show progress by default
 alias rsync='rsync --info=progress2'
 
