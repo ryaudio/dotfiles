@@ -80,11 +80,20 @@ sudo chsh -s $(which zsh) $USER
 
 # Install fonts for powerline
 # Note: still need to select them as default on mac
-git clone https://github.com/powerline/fonts
-cd fonts
-sh install.sh
-cd ..
-rm -rf fonts
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  mkdir -p ~/.local/share/fonts
+  cd ~/.local/share/fonts 
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  cd ~/Library/Fonts
+else
+  # What is this?
+  echo "Unknown os"
+  exit
+fi
+# Install the font in the fonts directory
+curl -fLo "Meslo LG M Regular Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Meslo/M/Regular/complete/Meslo%20LG%20M%20Regular%20Nerd%20Font%20Complete%20Mono.ttf?raw=true
+# Return to last directory
+cd -
 
 # Install TMUX Package Manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -98,4 +107,4 @@ vim +'PlugInstall --sync' +qa
 echo ""
 echo ""
 echo "Configuration done! You probably still want to configure git and ssh."
-echo "Make sure to select the \"Meslo LG M Regular for Powerline\" font in your terminal!"
+echo "Make sure to select the \"Meslo LG M Regular Nerd Font Complete Mono.ttf\" font in your terminal!"
