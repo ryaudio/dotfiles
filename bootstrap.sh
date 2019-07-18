@@ -21,7 +21,7 @@ packagelist=(
   cmatrix # Cool matrix effect as a placeholder, nice with tmux
 )
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux
   sudo apt update && sudo apt upgrade -y
   sudo apt install -y --ignore-missing ${packagelist[@]}
@@ -80,7 +80,7 @@ sudo chsh -s $(which zsh) $USER
 
 # Install fonts for powerline
 # Note: still need to select them as default on mac
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   mkdir -p ~/.local/share/fonts
   cd ~/.local/share/fonts 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
