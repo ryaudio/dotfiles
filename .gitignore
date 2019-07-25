@@ -1,9 +1,15 @@
-# Ignore everything by default
+# Ignore everything
 *
+# But not top level directories
+!/*/
 
-# Whitelist the dotfiles
-!.gitignore
-!.zshrc
-!bootstrap.sh
-!.vimrc
-!.tmux.conf
+# Make sure .oh-my-zsh is ignored because it is a git repo
+/.oh-my-zsh
+
+# None of these files
+!/.gitignore
+!/.zshrc
+!/bootstrap.sh
+!/.vimrc
+!/.tmux.conf
+!/.ssh/rc
