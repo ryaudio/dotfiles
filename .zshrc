@@ -134,13 +134,13 @@ else
 fi
 unset __conda_setup
 # Fix tmux issue where it uses sytem python instead of anaconda when conda env already activated
-conda deactivate
-conda activate base
+#source deactivate
+#source activate base
 # <<< conda initialize <<<
 
 # CUDA Toolkit
-export PATH="/usr/local/cuda/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+#export PATH="/usr/local/cuda/bin:$PATH"
+#export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 # GO workspace (where `go get` installs stuff, etc)
 export GOPATH="$HOME/.go"
