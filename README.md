@@ -7,7 +7,7 @@ A collection of the dotfiles to use and scripts to get you up and running fast o
 It will prompt you once or twice during the setup, and will take several minutes if this is the first time the computer has been updated in a while.
 3. Install the [Meslo LG M Regular Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Meslo/M/Regular/complete). 
 Set it as the font for your terminal.
-4. [Optional] Set your terminal to use the Monokai colors file. 
+4. [Optional] Set your terminal to use the Monokai Vivid or Remastered colors file. 
 If on windows and using WSL, use the [Windows ColorTool](https://devblogs.microsoft.com/commandline/introducing-the-windows-console-colortool/) to configure the terminal to use the file's colors.
 5. Delete `README.md`, `bootstrap.sh`, and `Monokai Remastered.itermcolors`.
 6. Enjoy your fancy new terminal!
