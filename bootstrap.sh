@@ -76,6 +76,9 @@ git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zs
 # Zsh Suggestions while typing
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
+# Fix zsh plugin perms
+compaudit | xargs chmod g-w,o-w
+
 sudo chsh -s $(which zsh) $USER
 
 # Install fonts for powerline

@@ -144,7 +144,7 @@ unset __conda_setup
 
 # GO workspace (where `go get` installs stuff, etc)
 export GOPATH="$HOME/.go"
-export PATH="$GOPATH/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH:/usr/local/go/bin"
 
 # Custom functions
 function puntar() {(
