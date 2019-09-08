@@ -144,7 +144,7 @@ export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 # GO workspace (where `go get` installs stuff, etc)
 export GOPATH="$HOME/.go"
-export PATH="$GOPATH/bin:$PATH:/usr/local/go/bin"
+export PATH="$GOPATH/bin:/usr/local/go/bin:$PATH"
 
 # Custom functions
 function puntar() {(
