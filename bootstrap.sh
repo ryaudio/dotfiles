@@ -19,21 +19,23 @@ packagelist=(
   git-lfs # Extension for git that manages big files better. Note that this still has to be activated for each git repo you want to use it in!
   xclip   # Needed for copying from tmux to system clipboard
   cmatrix # Cool matrix effect as a placeholder, nice with tmux
+  openssh
 )
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # Linux
+  echo "Detected Linux OS"
   sudo apt update && sudo apt upgrade -y
   sudo apt install -y --ignore-missing ${packagelist[@]}
   sudo apt install python3-dev python-dev vim-gtk ssh -y
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   # Mac OSX
+  echo "Detected MacOS"
   xcode-select --install 2> /dev/null
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null
   brew update && brew upgrade
+  brew cask install iterm2 xquartz
   brew install ${packagelist[@]}
-  brew install openssh
-  brew cask install iterm2
   
   # ensure that sshd is enabled
   sudo systemsetup -setremotelogin on
