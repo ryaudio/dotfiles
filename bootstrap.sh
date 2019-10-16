@@ -19,7 +19,8 @@ packagelist=(
   git-lfs # Extension for git that manages big files better. Note that this still has to be activated for each git repo you want to use it in!
   xclip   # Needed for copying from tmux to system clipboard
   cmatrix # Cool matrix effect as a placeholder, nice with tmux
-  openssh
+  openssh # Lets make sure that ssh is installed
+  pipenv  # Great alternative to anaconda, and recommended by the authors of pip
 )
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then

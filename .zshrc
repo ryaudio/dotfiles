@@ -93,6 +93,9 @@ autoload -U compinit && compinit  # Needed for zsh-completions
 
 source $ZSH/oh-my-zsh.sh
 
+# pipenv shell completion
+eval "$(pipenv --completion)"
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -117,26 +120,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-
-## >>> conda initialize >>>
-## !! Contents within this block are managed by 'conda init' !!
-#__conda_setup="$("$HOME/.anaconda3/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
-#if [ $? -eq 0 ]; then
-#    eval "$__conda_setup"
-#else
-#    if [ -f "$HOME/.anaconda3/etc/profile.d/conda.sh" ]; then
-#        . "$HOME/.anaconda3/etc/profile.d/conda.sh"
-#    else
-#        export PATH="$HOME/.anaconda3/bin:$PATH"
-#    fi
-#fi
-#unset __conda_setup
-## Fix tmux issue where it uses sytem python instead of anaconda when conda env already activated
-#conda deactivate
-#conda activate base
-## <<< conda initialize <<<
+ alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # CUDA Toolkit
 export PATH="/usr/local/cuda/bin:$PATH"
