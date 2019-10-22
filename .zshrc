@@ -10,12 +10,13 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs virtualenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 # Add a space in the first prompt
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%f"
 POWERLEVEL9K_ANACONDA_BACKGROUND='violet'
+POWERLEVEL9K_VIRTUALENV_BACKGROUND='violet'
 
 # Visual customisation of the second prompt line
 local user_symbol="$"
@@ -106,6 +107,9 @@ export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:/usr/local/go/bin:$PATH"
 
+# OpenSSL
+export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+
 # Personal aliases
  alias ohmyzsh="mate ~/.oh-my-zsh"
 
@@ -178,3 +182,8 @@ function copy() {(
   rsync --partial-dir ".$fname.tmp" $1 $2
 )}
 export copy
+
+export PYTHONPATH=$PYTHONPATH:/usr/local/lib
+
+# opam configuration
+test -r /Users/ryan.butler/.opam/opam-init/init.zsh && . /Users/ryan.butler/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
