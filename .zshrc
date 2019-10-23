@@ -106,11 +106,11 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-# Rust cargo
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # Python poetry
 export PATH="$HOME/.poetry/bin:$PATH"
+
+# Rust cargo
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # CUDA Toolkit
 export PATH="/usr/local/cuda/bin:$PATH"

@@ -112,6 +112,15 @@ vim +'PlugInstall --sync' +qa
 
 # Install pyenv to more easily manage python versions
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+pyenv install 3.6.9 # install python 3.6.9
+pyenv global 3.6.9  # make python 3.6.9 default global python version
+
+# Install python poetry to manage dependencies and venvs
+curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+
+# Set up tab completion
+mkdir -p $ZSH/plugins/poetry
+poetry completions zsh > $ZSH/plugins/poetry/_poetry
 
 echo ""
 echo ""
