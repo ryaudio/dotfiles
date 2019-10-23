@@ -110,6 +110,9 @@ tmux new-session -d -s plugin_install 'sleep 1; ~/.tmux/plugins/tpm/bindings/ins
 # https://github.com/junegunn/vim-plug/issues/675#issuecomment-328157169
 vim +'PlugInstall --sync' +qa
 
+# Install pyenv to more easily manage python versions
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
 echo ""
 echo ""
 echo "Configuration done! You probably still want to configure git and ssh."

@@ -95,9 +95,22 @@ autoload -U compinit && compinit  # Needed for zsh-completions
 source $ZSH/oh-my-zsh.sh
 
 # pipenv shell completion
-eval "$(pipenv --completion)"
-#pipenv venvs go in project directory instead of globally
-export PIPENV_VENV_IN_PROJECT=1
+# eval "$(pipenv --completion)"
+# pipenv venvs go in project directory instead of globally
+# export PIPENV_VENV_IN_PROJECT=1
+
+# Enable pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# Rust cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Python poetry
+export PATH="$HOME/.poetry/bin:$PATH"
 
 # CUDA Toolkit
 export PATH="/usr/local/cuda/bin:$PATH"
