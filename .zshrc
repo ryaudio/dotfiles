@@ -99,12 +99,7 @@ source $ZSH/oh-my-zsh.sh
 # pipenv venvs go in project directory instead of globally
 # export PIPENV_VENV_IN_PROJECT=1
 
-# Enable pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+# Pyenv enabled in login shells only (.zprofile) to avoid overwriting venvs like poetry
 
 # Python poetry
 export PATH="$HOME/.poetry/bin:$PATH"

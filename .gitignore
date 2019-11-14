@@ -9,6 +9,7 @@
 # None of these files
 !/.gitignore
 !/.zshrc
+!/.zprofile
 !/bootstrap.sh
 !/.vimrc
 !/.tmux.conf
