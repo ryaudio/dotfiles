@@ -10,7 +10,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs virtualenv)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs virtualenv anaconda)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 # Add a space in the first prompt
@@ -94,11 +94,6 @@ autoload -U compinit && compinit  # Needed for zsh-completions
 
 source $ZSH/oh-my-zsh.sh
 
-# pipenv shell completion
-# eval "$(pipenv --completion)"
-# pipenv venvs go in project directory instead of globally
-# export PIPENV_VENV_IN_PROJECT=1
-
 # Pyenv enabled in login shells only (.zprofile) to avoid overwriting venvs like poetry
 
 # Python poetry
@@ -114,6 +109,9 @@ export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 # GO workspace (where `go get` installs stuff, etc)
 export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:/usr/local/go/bin:$PATH"
+
+# Clang
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 # OpenSSL
 export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
