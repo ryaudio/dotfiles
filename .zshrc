@@ -84,7 +84,6 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} %m $user_sy
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
   zsh-autosuggestions
   zsh-completions
   zsh-syntax-highlighting
@@ -92,9 +91,15 @@ plugins=(
 )
 autoload -U compinit && compinit  # Needed for zsh-completions
 
+# Improve speed of prompt
+POWERLEVEL9K_USE_CACHE=true
+
 source $ZSH/oh-my-zsh.sh
 
 # Pyenv enabled in login shells only (.zprofile) to avoid overwriting venvs like poetry
+
+# Fix weird pyenv interaction with git on macos
+export PATH="/usr/local/opt/gettext/bin:$PATH"
 
 # Python poetry
 export PATH="$HOME/.poetry/bin:$PATH"
@@ -193,3 +198,6 @@ export PYTHONPATH=$PYTHONPATH:/usr/local/lib
 
 # opam configuration
 test -r /Users/ryan.butler/.opam/opam-init/init.zsh && . /Users/ryan.butler/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
